@@ -4,18 +4,31 @@ import {
   StatusBar,
   SafeAreaView,
   TextInput,
-  CheckBox,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React, {useState} from 'react';
+import {iconConst} from '../../utils/Images';
 
+const SignUp = props => {
+  let {route} = props;
 
-const SignUp = (props) => {
-  let {route}=props
+  console.log(route.params.data), 'ls;lks;lks;lksl;ks';
 
-  console.log(route.params.data),'ls;lks;lks;lksl;ks';
-  
   const [isSelected, setSelection] = useState(false);
+
+  const changeIcons = () => {
+    setSelection(!isSelected);
+  };
+
+  const signupHandler = async () => {
+    dispatch({
+      type: 'CHANGE_STACK',
+      payload: 'MAIN',
+    });
+    let name = 'MAIN';
+    await setData('StackName', name);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -42,19 +55,32 @@ const SignUp = (props) => {
         </View>
 
         <View className=" flex mx-4 my-2">
-        {/* <CheckBox 
+          {/* <CheckBox 
           value={isSelected}
           onClick={()=> setSelection(!isSelected)}
           
         /> */}
+          <TouchableOpacity onPress={changeIcons}>
+            {isSelected ? (
+              <Image source={iconConst.CheckBox} />
+            ) : (
+              <Image source={iconConst.CheckBoxEmpty} />
+            )}
+          </TouchableOpacity>
+
           <Text className="ml-2 text-[12px] font-medium ">
-            I agree with the <Text className="text-pink-500">terms and conditions</Text> and <Text className="text-pink-500">Privacy Policies </Text>
+            I agree with the{' '}
+            <Text className="text-pink-500">terms and conditions</Text> and{' '}
+            <Text className="text-pink-500">Privacy Policies </Text>
           </Text>
         </View>
         <View className="mx-4 my-4">
-          <TouchableOpacity className="p-2 py-4 justify-center items-center rounded-md w-full bg-theme">
-            <Text className="text-ltheme text-md">Sign Up</Text>
-          </TouchableOpacity>
+          <CustomBtn
+            name={'SignUp'}
+            onPress={() => {
+              signupHandler();
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>

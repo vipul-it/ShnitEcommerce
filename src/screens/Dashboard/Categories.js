@@ -137,14 +137,14 @@ const Categories = ({navigation}) => {
                         className="z-30 top-2 absolute right-2"
                         onPress={() => favrouiteHandlerProduct(index)}>
                         {item.like ? (
-                          // <HeartIcon fill="#1AAABC" />
+                          
                           <Image
                             className="w-[15px] h-[13px]"
                             source={HeartFill}
                           />
                         ) : (
                           <Image className="w-[15px] h-[13px]" source={Heart} />
-                          // <HeartIcon fill="gray" />
+                          
                         )}
                       </TouchableOpacity>
                     </View>
@@ -153,10 +153,10 @@ const Categories = ({navigation}) => {
                       <View className="py-3">
                         <Text className="font-bold">{item.title}</Text>
                         <Text className="">{item.discription}</Text>
-                        <Text className="font-bold text-theme my-1">
-                          {'\u20B9'}
-                          {item.price}
-                        </Text>
+                          <Text className="font-bold text-theme my-1">
+                            {'\u20B9'}
+                            {item.price}
+                          </Text>
                         <View className="flex-row gap-1 items-center">
                           <Image className="w-3 h-3" source={iconConst.Star} />
                           <Text>{item.rating} Ratings</Text>

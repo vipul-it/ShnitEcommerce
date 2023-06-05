@@ -20,6 +20,7 @@ module.exports = {
       },
       colors: {
         theme: '#1AAABC',
+        ptext: '#364670',
         ltheme: '#E0F8F6',
         atext: '#494949',
         btext: '#A4A4A4',

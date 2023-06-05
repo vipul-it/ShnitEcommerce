@@ -9,23 +9,31 @@ import {
 import React from 'react';
 import CustomBtn from '../../components/Custom/CustomBtn';
 import SignUp from './Signup';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 
-const Login = props => {
-  const navigation=useNavigation()
-  const dispatch=useDispatch()
-  const {product}=useSelector((state)=>state.cartReducers)
+const Login = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {product} = useSelector(state => state.cartReducers);
 
   // console.log(product,'----');
 
-  const carthandler=()=>{
-    let temp=[...product,{name:'Nandita',id:3}]
+  // const loginHandler = () => {
+  //   let temp = [...product, {name: 'Nandita', id: 3}];
+  //   dispatch({
+  //     type: 'PRODUCT',
+  //     payload: temp,
+  //   });
+  // };
+  const loginHandler = async () => {
     dispatch({
-      type:'PRODUCT',
-      payload:temp
-    })
-  }
+      type: 'CHANGE_STACK',
+      payload: 'MAIN',
+    });
+    let name = 'MAIN';
+    await setData('StackName', name);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -43,19 +51,32 @@ const Login = props => {
           <TextInput className="pl-4" placeholder="Password" />
         </View>
         <View className="mx-4 my-2">
-          <Text className="text-center text-sm">Forgot Password ?</Text>
+          <TouchableOpacity onPress={navigation.navigate('RecoverPassword')}>
+            <Text className="text-center text-sm">Forgot Password ?</Text>
+          </TouchableOpacity>
         </View>
 
         <View className="mx-4 my-2">
-      <CustomBtn name={'Login'} onPress={()=>{carthandler()}} />
+          <CustomBtn
+            name={'Login'}
+            onPress={loginHandler}
+          />
         </View>
         <View className="mx-4 my-2">
-          <Text className="text-center text-sm text-blackc">
+          <TouchableOpacity onPress={navigation.navigate('Signup')}>
+             <Text className="text-center text-sm text-blackc">
             Doesn't Have An Account ?
           </Text>
+          </TouchableOpacity>
+         
         </View>
         <View className="mx-4 my-4">
-        <CustomBtn name={'SignUp'} onPress={()=>{navigation.navigate('Signup',{data:'honnnnn'})}}/>
+          <CustomBtn
+            name={'SignUp'}
+            onPress={() => {
+              navigation.navigate('Signup');
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>

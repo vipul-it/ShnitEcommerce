@@ -11,12 +11,11 @@ import React from 'react';
 import {images} from '../../utils/ImageConstant';
 import {useNavigation} from '@react-navigation/native';
 import CustomBtn from '../../components/Custom/CustomBtn';
-import Login from './Login';
 import {setData} from '../../utils/Common';
 import {useDispatch} from 'react-redux';
 
-const Welcome = props => {
-  const navigation = useNavigation();
+const Welcome = ({navigation}) => {
+  // const navigation = useNavigation();
   const dispatch = useDispatch();
   const loginHandler = () => {
     navigation.navigate('Login');
@@ -43,9 +42,6 @@ const Welcome = props => {
         </Text>
       </View>
       <View className="mx-4 my-2">
-        {/* <TouchableOpacity className="p-2 py-4 justify-center items-center rounded-md w-full bg-theme">
-          <Text className="text-ltheme text-md">Login/SignUp</Text>
-        </TouchableOpacity> */}
         <CustomBtn name={'Login/SignUp'} onPress={loginHandler} />
       </View>
       <View className="mx-4 my-4">

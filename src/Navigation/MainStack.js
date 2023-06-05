@@ -3,6 +3,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../screens/HomeScreen';
+import CustomDrawer from '../screens//Home/CustomDrawer'
+
 // import Home from './Home/Home';
 // import WatchList from './MyAccount/WatchList';
 // import PaymentList from './MyAccount/PaymentList';
@@ -126,16 +128,17 @@ const DrawerStack = () => (
     <Drawer.Navigator
       screenOptions={{
         headerShown: false,
-        initialRouteName: 'Home',
+        initialRouteName: 'HomeScreen',
         drawerStyle: {
-          width: Platform.OS == 'ios' ? '70%' : '70%',
+          width: Platform.OS == 'ios' ? '80%' : '80%',
           height: '100%',
           backgroundColor: '#fff',
+          color: '#1AAABC'
         },
       }}
-      // drawerContent={props => <DrawerScreen {...props} />}
+      drawerContent={props => <CustomDrawer {...props} />}
     >
-      <Drawer.Screen name="Drawer Screen" component={TabStack} />
+      <Drawer.Screen name="Drawer Screen"  component={TabStack} />
       <Drawer.Screen name="New" component={New} />
       <Drawer.Screen name="Apparel" component={Apparel} />
       <Drawer.Screen name="Bag" component={Bag} />

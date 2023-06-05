@@ -240,7 +240,7 @@ const HomeScreen = () => {
               />
             </View>
             <View>
-              <Text className="text-lg text-atext text-center my-2 font-SemiBold ">
+              <Text className="text-lg text-ptext text-center my-2 font-SemiBold ">
                 Product You Might Like
               </Text>
             </View>
